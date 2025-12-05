@@ -1,14 +1,27 @@
 <header class="site-header">
-  <div class="wrap">
+  <div class="header-inner">
     <div class="brand">
-      <a href="{{ '/' | relative_url }}">{{ site.title }}</a>
+      <a href="{{ '/' | relative_url }}" class="brand-link">
+        <span class="brand-text">{{ site.title }}</span>
+      </a>
+      {% if site.description %}
+      <p class="tagline">{{ site.description }}</p>
+      {% endif %}
     </div>
 
-    <div class="controls">
-      <label class="ad-toggle">
-        <input type="checkbox" id="spamAdToggle" />
-        <span>Enable playful ads</span>
-      </label>
+    <div class="header-right">
+      <nav class="main-nav">
+        <!-- add more nav items here -->
+      </nav>
+
+      <button id="sidebarToggle" class="sidebar-toggle" aria-label="Toggle posts sidebar">
+        <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"
+          stroke-linecap="round" stroke-linejoin="round">
+          <line x1="3" y1="12" x2="21" y2="12"></line>
+          <line x1="3" y1="6" x2="21" y2="6"></line>
+          <line x1="3" y1="18" x2="21" y2="18"></line>
+        </svg>
+      </button>
     </div>
   </div>
 </header>

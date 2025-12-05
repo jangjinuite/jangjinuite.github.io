@@ -1,40 +1,41 @@
-(function(){
-  var body = document.body;
-  var buildAds = body.getAttribute('data-build-ads') === 'true';
-  var storageKey = 'spamAdsEnabled';
+document.addEventListener('DOMContentLoaded', () => {
+  // --- Dark Mode ---
+  const themeToggle = document.getElementById('themeToggle');
+  const prefersDarkScheme = window.matchMedia('(prefers-color-scheme: dark)');
 
-  function readStored(){
-    try{
-      var v = localStorage.getItem(storageKey);
-      if(v === null) return null;
-      return v === 'true';
-    }catch(e){ return null; }
+  // Check local storage or system preference
+  const currentTheme = localStorage.getItem('theme');
+  if (currentTheme === 'dark' || (!currentTheme && prefersDarkScheme.matches)) {
+    document.documentElement.setAttribute('data-theme', 'dark');
   }
 
-  function writeStored(val){
-    try{ localStorage.setItem(storageKey, val ? 'true' : 'false'); }catch(e){}
-  }
-
-  function applyState(enabled){
-    if(enabled) body.classList.add('ads-on');
-    else body.classList.remove('ads-on');
-
-    var toggle = document.getElementById('spamAdToggle');
-    if(toggle) toggle.checked = enabled;
-  }
-
-  // Initial state: prefer localStorage, fallback to build setting
-  var stored = readStored();
-  var initial = (stored === null) ? buildAds : stored;
-  applyState(initial);
-
-  // Bind toggle
-  var toggleEl = document.getElementById('spamAdToggle');
-  if(toggleEl){
-    toggleEl.addEventListener('change', function(e){
-      var on = !!e.target.checked;
-      writeStored(on);
-      applyState(on);
+  if (themeToggle) {
+    themeToggle.addEventListener('click', () => {
+      let theme = document.documentElement.getAttribute('data-theme');
+      if (theme === 'dark') {
+        document.documentElement.setAttribute('data-theme', 'light');
+        localStorage.setItem('theme', 'light');
+      } else {
+        document.documentElement.setAttribute('data-theme', 'dark');
+        localStorage.setItem('theme', 'dark');
+      }
     });
   }
-})();
+
+  // --- Sidebar Toggle (Mobile) ---
+  const sidebarToggle = document.getElementById('sidebarToggle');
+  const sidebar = document.querySelector('.sidebar');
+
+  if (sidebarToggle && sidebar) {
+    sidebarToggle.addEventListener('click', () => {
+      sidebar.classList.toggle('active');
+
+      // If hidden, show it (simple logic for now)
+      if (window.getComputedStyle(sidebar).display === 'none') {
+        sidebar.style.display = 'block';
+      } else if (window.innerWidth <= 900) {
+        sidebar.scrollIntoView({ behavior: 'smooth' });
+      }
+    });
+  }
+});

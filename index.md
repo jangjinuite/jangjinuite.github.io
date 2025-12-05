@@ -4,23 +4,22 @@ title: Home
 ---
 
 <section class="container">
-  <h1>{{ site.title }}</h1>
-  <p>{{ site.description }}</p>
-
-  <main>
+  <div class="latest-posts">
     {% for post in site.posts %}
-    <article class="post">
-      <h2><a href="{{ post.url | relative_url }}">{{ post.title }}</a></h2>
-      <p class="meta">{{ post.date | date: "%Y-%m-%d" }}</p>
-      {{ post.excerpt }}
-    </article>
+      <article class="post-preview">
+        <a href="{{ post.url | relative_url }}" class="post-preview-link">
+          {% if post.image %}
+          <div class="post-thumbnail">
+            <img src="{{ post.image | relative_url }}" alt="{{ post.title }}">
+          </div>
+          {% endif %}
+          <div class="post-info">
+            <h2>{{ post.title }}</h2>
+            <p class="post-excerpt">{{ post.excerpt | strip_html | truncatewords: 20 }}</p>
+            <span class="meta">{{ post.date | date: "%Y-%m-%d" }}</span>
+          </div>
+        </a>
+      </article>
     {% endfor %}
-
-    {% if paginator.total_pages > 1 %}
-      <nav class="pagination">
-        {% if paginator.previous_page %}<a href="{{ paginator.previous_page_path }}">Previous</a>{% endif %}
-        {% if paginator.next_page %}<a href="{{ paginator.next_page_path }}">Next</a>{% endif %}
-      </nav>
-    {% endif %}
-  </main>
+  </div>
 </section>
