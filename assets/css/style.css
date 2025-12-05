@@ -1,0 +1,24 @@
+/* Minimal styles */
+:root{
+  --max-width:900px;
+  --muted:#6b6b6b;
+}
+body{font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial; color:#111; line-height:1.6; margin:0; padding:0; background:#fff}
+.wrap{max-width:var(--max-width);margin:0 auto;padding:1rem}
+.site-header{border-bottom:1px solid #eee;background:#fafafa}
+.site-header .wrap{display:flex;justify-content:space-between;align-items:center}
+.brand a{font-weight:600;color:inherit;text-decoration:none}
+.controls .ad-toggle{display:flex;align-items:center;gap:.5rem}
+
+.container{padding:2rem}
+.post{margin-bottom:2rem}
+.meta{color:var(--muted);font-size:.9rem}
+
+.ad-slot{display:none}
+body.ads-on .ad-slot{display:block;border:2px dashed #ccc;background:#fff;padding:1rem;margin:1rem 0;text-align:center;color:var(--muted)}
+.ad-slot::before{content:"Ad slot (empty)";display:block;font-weight:600}
+
+.site-footer{border-top:1px solid #eee;padding:1rem 0;margin-top:2rem}
+
+/* Small screens */
+@media (max-width:600px){.wrap{padding:.75rem}}

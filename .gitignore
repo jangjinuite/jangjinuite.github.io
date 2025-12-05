@@ -1,0 +1,20 @@
+# Jekyll / Ruby / Windows ignores
+_site/
+.bundle/
+vendor/bundle/
+.sass-cache/
+.jekyll-cache/
+.jekyll-metadata
+Gemfile.lock
+node_modules/
+.DS_Store
+Thumbs.db
+*.swp
+*.tmp
+.env
+.env.*
+.vscode/
+.idea/
+
+# Local private README (do not publish)
+README_for_me.md
