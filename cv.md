@@ -5,19 +5,19 @@ title: Curriculum Vitae
 
 <div class="cv-container">
   <h1>Jinwoo Jang</h1>
-  <p class="subtitle">Developer & Creator</p>
+  <p class="subtitle">Developer + Creator</p>
 
   <section class="cv-section">
     <h2>About Me</h2>
-    <p>Hello! I am Jinwoo Jang, also known as Jinuite. I am passionate about building modern web applications and exploring new technologies.</p>
+    <p>.</p>
   </section>
 
   <section class="cv-section">
     <h2>Experience</h2>
     <ul>
       <li>
-        <strong>Github Blog Creator</strong> (2025 - Present)
-        <p>Building a fancy Jekyll blog theme.</p>
+        <strong>Seoul National University</strong> (2022 - Present)
+        <p>Computer Science & Engineering</p>
       </li>
     </ul>
   </section>
@@ -25,7 +25,7 @@ title: Curriculum Vitae
   <section class="cv-section">
     <h2>Contact</h2>
     <p>Email: jinumeral@snu.ac.kr</p>
-    <p>GitHub: <a href="https://github.com/jangjinuite">jangjinuite</a></p>
+    <p>GitHub, Instagram: <a href="https://github.com/jangjinuite">jangjinuite</a></p>
   </section>
 </div>
 

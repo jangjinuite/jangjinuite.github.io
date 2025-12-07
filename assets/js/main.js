@@ -26,16 +26,22 @@ document.addEventListener('DOMContentLoaded', () => {
   const sidebarToggle = document.getElementById('sidebarToggle');
   const sidebar = document.querySelector('.sidebar');
 
+  // Create overlay element
+  const overlay = document.createElement('div');
+  overlay.className = 'sidebar-overlay';
+  document.body.appendChild(overlay);
+
   if (sidebarToggle && sidebar) {
+    // Toggle sidebar when button is clicked
     sidebarToggle.addEventListener('click', () => {
       sidebar.classList.toggle('active');
+      overlay.classList.toggle('active');
+    });
 
-      // If hidden, show it (simple logic for now)
-      if (window.getComputedStyle(sidebar).display === 'none') {
-        sidebar.style.display = 'block';
-      } else if (window.innerWidth <= 900) {
-        sidebar.scrollIntoView({ behavior: 'smooth' });
-      }
+    // Close sidebar when overlay is clicked
+    overlay.addEventListener('click', () => {
+      sidebar.classList.remove('active');
+      overlay.classList.remove('active');
     });
   }
 });
