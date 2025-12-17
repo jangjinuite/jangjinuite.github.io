@@ -1,8 +1,0 @@
-{%- comment -%}
-Ad include. The build-time default is in `_config.yml` and is placed on the body as `data-build-ads`.
-Client-side JS reads localStorage to override the build default for the visitor.
-{%- endcomment -%}
-
-<div class="ad-slot" data-position="{{ include.position | default: 'unknown' }}">
-  <!-- Ad slot (intentionally left empty) -->
-</div>
