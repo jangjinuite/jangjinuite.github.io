@@ -6,7 +6,13 @@
   {% assign posts = site.categories[category_name] %}
   {% if posts.size > 0 %}
   <div class="category-group">
-    <h3 class="category-title">{{ category_name }}</h3>
+    <h3 class="category-title" data-accordion-toggle>
+      <span>{{ category_name }}</span>
+      <svg class="accordion-icon" width="16" height="16" viewBox="0 0 16 16" fill="none" stroke="currentColor"
+        stroke-width="2">
+        <polyline points="4 6 8 10 12 6"></polyline>
+      </svg>
+    </h3>
     <nav class="post-list">
       {% for post in posts %}
       <a class="post-list-item" href="{{ post.url | relative_url }}">

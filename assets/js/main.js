@@ -45,6 +45,23 @@ document.addEventListener('DOMContentLoaded', () => {
     });
   }
 
+  // --- Accordion Menu Toggle ---
+  const categoryGroups = document.querySelectorAll('.category-group');
+
+  // Set all categories to collapsed by default
+  categoryGroups.forEach(group => {
+    group.classList.add('collapsed');
+  });
+
+  // Add click handlers for accordion toggles
+  const accordionToggles = document.querySelectorAll('[data-accordion-toggle]');
+  accordionToggles.forEach(toggle => {
+    toggle.addEventListener('click', () => {
+      const categoryGroup = toggle.closest('.category-group');
+      categoryGroup.classList.toggle('collapsed');
+    });
+  });
+
   // --- Scroll Indicator ---
   const scrollIndicator = document.createElement('div');
   scrollIndicator.className = 'scroll-indicator';

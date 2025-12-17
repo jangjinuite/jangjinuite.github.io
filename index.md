@@ -2,7 +2,6 @@
 layout: default
 title: Home
 ---
-
 <section class="container">
   <div class="cv-container">
     <h1>Jinwoo Jang (장진우)</h1>
