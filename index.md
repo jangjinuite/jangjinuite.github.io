@@ -16,12 +16,12 @@ title: Home
       <h2>Technical Experiences</h2>
       <ul>
         <li>
-          <strong><a href="https://www.youtube.com/watch?v=hqrGmIwmVwk" target="_blank">국방AI경진대회</a></strong> (2024.11., 8등)
-          <p>탱크 로봇을 위한 자율주행 및 객체인식 모델 개발 <a href="{% post_url 2025-12-17-국방AI경진대회 %}">[Post]</a></p>
-        </li>
-        <li>
           <strong><a href="https://marg.snu.ac.kr" target="_blank">MARG</a> 하계 방학 인턴</strong> (2025.07.-2025.08.)
           <p>신디사이저 파라미터 매칭 모델을 보조하는 경량 Audio to Audio 모델 학습 <a href="{% post_url 2025-12-17-2025MARG %}">[Post]</a></p>
+        </li>
+        <li>
+          <strong><a href="https://www.youtube.com/watch?v=hqrGmIwmVwk" target="_blank">국방AI경진대회</a></strong> (2024.11., 8등)
+          <p>탱크 로봇을 위한 자율주행 및 객체인식 모델 개발 <a href="{% post_url 2025-12-17-국방AI경진대회 %}">[Post]</a></p>
         </li>
       </ul>
     </section>
@@ -67,7 +67,7 @@ title: Home
       <ul>
         <li>
           <strong><a href="https://open.spotify.com/track/6uAhuODpgAQhOk3zM72rDJ?si=cd59d4fc4dfa4c45" target="_blank">물이 흐르듯이</a></strong> (2025.07.)
-          <p>Digital Single</p>
+          <p>Digital Single <a href="https://www.youtube.com/watch?v=4BCI2GC4GRQ" target="_blank">[MV]</a></p>
         </li>
         <li>
           <strong><a href="https://open.spotify.com/album/0IQhlxHz0OiM5BcIPQrZDD" target="_blank">SEQUENCE</a></strong> (2023.10.)
@@ -108,7 +108,6 @@ title: Home
       </ul>
     </section>
   </div>
-
   <div class="recent-posts-section">
     <h2 class="section-title">Recent Posts</h2>
     <div class="latest-posts">
@@ -122,8 +121,14 @@ title: Home
             {% endif %}
             <div class="post-info">
               <h3>{{ post.title }}</h3>
-              <p class="post-excerpt">{{ post.excerpt | strip_html | truncatewords: 20 }}</p>
-              <span class="meta">{{ post.date | date: "%Y-%m-%d" }}</span>
+              <div>
+                {% if post.categories %}
+                  {% for category in post.categories %}
+                    <span class="post-category">{{ category }}</span>
+                  {% endfor %}
+                {% endif %}
+                <span class="meta">{{ post.date | date: "%Y-%m-%d" }}</span>
+              </div>
             </div>
           </a>
         </article>
