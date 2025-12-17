@@ -44,4 +44,46 @@ document.addEventListener('DOMContentLoaded', () => {
       overlay.classList.remove('active');
     });
   }
+
+  // --- Scroll Indicator ---
+  const scrollIndicator = document.createElement('div');
+  scrollIndicator.className = 'scroll-indicator';
+  scrollIndicator.innerHTML = 'Recent Post';
+  document.body.appendChild(scrollIndicator);
+
+  const recentPostsSection = document.querySelector('.recent-posts-section');
+
+  // Click handler to scroll to Recent Posts
+  scrollIndicator.addEventListener('click', () => {
+    if (recentPostsSection) {
+      const headerHeight = 70;
+      const targetPosition = recentPostsSection.getBoundingClientRect().top + window.scrollY - headerHeight - 10;
+      window.scrollTo({
+        top: targetPosition,
+        behavior: 'smooth'
+      });
+    }
+  });
+
+  if (recentPostsSection) {
+    const checkScrollIndicator = () => {
+      const sectionTitle = recentPostsSection.querySelector('.section-title');
+      if (sectionTitle) {
+        const rect = sectionTitle.getBoundingClientRect();
+        const isFullyVisible = rect.top >= 0 && rect.bottom <= window.innerHeight;
+
+        if (isFullyVisible) {
+          scrollIndicator.classList.add('hidden');
+        } else {
+          scrollIndicator.classList.remove('hidden');
+        }
+      }
+    };
+
+    // Check on scroll
+    window.addEventListener('scroll', checkScrollIndicator, { passive: true });
+
+    // Initial check
+    checkScrollIndicator();
+  }
 });
